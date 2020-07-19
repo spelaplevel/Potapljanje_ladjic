@@ -24,16 +24,49 @@ class Igra():
         if vrstica in range(0, 10) and stolpec in range(0, 10):
             if self.polje[na_vrsti][vrstica][stolpec] != -1:
                 return 'to mesto ni prosto'
-            #tuki morm dodat še da poskrbimo za polja okoli že postavljenih ladjic da tam ni drugih ladjic
             # Postavimo vodoravne ladjice:
-            if postavitev == 0 and stolpec + self.ladjice[na_vrsti][indeks] <= 10: 
-                for i in range(stolpec, stolpec + self.ladjice[na_vrsti][indeks]): 
+            if postavitev == 0 and stolpec + self.ladjice[na_vrsti][indeks] <= 10:
+                for i in range(stolpec, stolpec + self.ladjice[na_vrsti][indeks]):  # Postavi ladjico.
                     self.polje[na_vrsti][vrstica][i] = indeks
+                if stolpec - 1 in range(0, 10):  # Označi mesto levo od ladjice.
+                    self.polje[na_vrsti][vrstica][stolpec - 1] = -2
+                if stolpec + self.ladjice[na_vrsti][indeks] in range(0, 10):  # Označi mesto desno od ladjice.
+                    self.polje[na_vrsti][vrstica][stolpec + self.ladjice[na_vrsti][indeks]] = -2
+                for i in range(stolpec, stolpec + self.ladjice[na_vrsti][indeks]):
+                    if vrstica - 1 in range(0, 10):
+                        self.polje[na_vrsti][vrstica - 1][i] = -2  # Označi mesta nad ladjico.
+                        if stolpec - 1 in range(0, 10):  # Označi mesto levo zgoraj.
+                            self.polje[na_vrsti][vrsica - 1][stolpec - 1] = -2
+                        if stolpec + self.ladjice[na_vrsti][indeks] in range(0, 10):  # Označi mesto desno zgoraj.
+                            self.polje[na_vrsti][vrstica - 1][stolpec + self.ladjica[na_vrsti][indeks]] = -2
+                    if vrstica + 1 in range(0, 10):
+                        self.polje[na_vrsti][vrstica + 1][i] = -2  # Označi mesta pod ladjico.
+                        if stolpec - 1 in range(0, 10):  # Označi mesto levo spodaj.
+                            self.polje[na_vrsti][vrstica + 1][stolpec - 1] = -2
+                        if stolpec + self.ladjice[na_vrsti][indeks] in range(0, 10):  # Označi mesto desno spodaj.
+                            self.polje[na_vrsti][vrstica + 1][stolpec + self.ladjice[na_vrsti][indeks]] = -2
                 return True
             # Postavimo navpične ladjice: 
             elif postavitev == 1 and vrstica + self.ladjice[na_vrsti][indeks] <= 10: 
-                for i in range(vrstica, vrstica + self.ladjice[na_vrsti][indeks]):
+                for i in range(vrstica, vrstica + self.ladjice[na_vrsti][indeks]):  # Postavi ladjico.
                     self.polje[na_vrsti][i][stolpec] = indeks
+                if vrstica - 1 in range(0, 10):  # Označi mesto nad ladjico.
+                    self.polje[na_vrsti][vrstica - 1][stolpec] = -2
+                if vrstica + self.ladjice[na_vrsti][indeks] in range(0, 10):  # Označi mesto pod ladjico.
+                    self.polje[na_vrsti][vrstica + self.ladjice[na_vrsti][indeks]][stolpec] = -2
+                for i in range(vrstica, vrstica + self.ladjice[na_vrsti][indeks]):
+                    if stolpec - 1 in range(0, 10):
+                        self.polje[na_vrsti][i][stolpec - 1] = -2  # Označi mesta levo od ladjice.
+                        if vrstica - 1 in range(0, 10):  # Označi mesto levo zgoraj. 
+                            self.polje[na_vrsti][vrstica - 1][stolpec - 1] = -2
+                        if vrstica + self.ladjice[na_vrsti][indeks] in range(0, 10):  # Označi mesto levo spodaj. 
+                            self.polje[na_vrsti][vrstica + self.ladjice[na_vrsti][indeks]][stolpec - 1] = -2
+                    if stolpec + 1 in range(0, 10):
+                        self.polje[na_vrsti][i][stolpec + 1] = -2  # Označi mesta desno od ladjice. 
+                        if vrstica - 1 in range(0, 10):
+                            self.polje[na_vrsti][vrstica - 1][stolpec + 1] = -2  # Označi mesto desno zgoraj. 
+                        if vrstica + self.ladjice[na_vrsti][indeks] in range(0, 10):
+                            self.polje[na_vrsti][vrstica + self.ladjice[na_vrsti][indeks]][stolpec + 1] = -2  # Označi mesto desno zgoraj. 
                 return True
         return False
 
@@ -58,22 +91,3 @@ class Igra():
         else:
             self.zgodovina_strelov[na_vrsti][vrstica][stolpec] = 0 
             return 'zgrešena'
-'''
-Mesta zraven ladjic, ki jih označimo z - 2:
-
-dolzina = self.ladjice[na_vrsti][indeks] TO VELJA PRED ZAČETKOM IGRE KO ŠE NE ZBIJAMO ŽIVLJENJSKIH TOČK
-
-postavitev == 0 (vodoravne):
-
-self.polje[na_vrsti][vrstica - 1][stolpec - 1:stolpec + dolzina + 1]
-self.polje[na_vrsti][vrstica + 1][stolpec - 1:stolpec + dolzina + 1]
-self.polje[na_vrsti][vrstica][stolpec - 1]
-self.polje[na_vrsti][vrstica][stolpec + dolzina]
-
-postavitev == 1 (navpične):
-
-self.polje[na_vrsti][vrstica - 1:vrstica + dolzina + 1][stolpec - 1]
-self.polje[na_vrsti][vrstica - 1:vrstica + dolzina + 1][stolpec + 1]
-self.polje[na_vrsti][vrstica - 1][stolpec]
-self.polje[na_vrsti][vrstica + dolzina][stolpec]
-'''
