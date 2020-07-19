@@ -3,7 +3,8 @@ class Igra():
     Polje : [polje[0],polje[1]],
      polje[i]: igralna plošča i-tega igralca
      polje[i][vrstica][stolpec] == -1: na mestu [vrstica][stolpec] ni nobene ladjice
-     polje[i][vrstica][stolpec] == n: na mestu [vrstica][stolpec] je ladjica z indeksom n (to je indeks v seznamu ladjice).
+     polje[i][vrstica][stolpec] == n: na mestu [vrstica][stolpec] je ladjica z indeksom n (to je indeks v seznamu ladjice)
+     polje[i][vrstica][stolpec] == -2: mesto [vrstica][stolpec] je v neposredni bližini neke ladjice in zato ni prosto.
      primer seznama: ladjice = [2,4,4,5]
 
      zgodovina_strelov[i]: plošča kamor si i-ti igralec označuje uspele in neuspele strele
@@ -22,7 +23,7 @@ class Igra():
         '''
         if vrstica in range(0, 10) and stolpec in range(0, 10):
             if self.polje[na_vrsti][vrstica][stolpec] != -1:
-                return 'tu že stoji ladjica'
+                return 'to mesto ni prosto'
             #tuki morm dodat še da poskrbimo za polja okoli že postavljenih ladjic da tam ni drugih ladjic
             # Postavimo vodoravne ladjice:
             if postavitev == 0 and stolpec + self.ladjice[na_vrsti][indeks] <= 10: 
@@ -57,3 +58,22 @@ class Igra():
         else:
             self.zgodovina_strelov[na_vrsti][vrstica][stolpec] = 0 
             return 'zgrešena'
+'''
+Mesta zraven ladjic, ki jih označimo z - 2:
+
+dolzina = self.ladjice[na_vrsti][indeks] TO VELJA PRED ZAČETKOM IGRE KO ŠE NE ZBIJAMO ŽIVLJENJSKIH TOČK
+
+postavitev == 0 (vodoravne):
+
+self.polje[na_vrsti][vrstica - 1][stolpec - 1:stolpec + dolzina + 1]
+self.polje[na_vrsti][vrstica + 1][stolpec - 1:stolpec + dolzina + 1]
+self.polje[na_vrsti][vrstica][stolpec - 1]
+self.polje[na_vrsti][vrstica][stolpec + dolzina]
+
+postavitev == 1 (navpične):
+
+self.polje[na_vrsti][vrstica - 1:vrstica + dolzina + 1][stolpec - 1]
+self.polje[na_vrsti][vrstica - 1:vrstica + dolzina + 1][stolpec + 1]
+self.polje[na_vrsti][vrstica - 1][stolpec]
+self.polje[na_vrsti][vrstica + dolzina][stolpec]
+'''
