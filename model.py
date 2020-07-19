@@ -63,10 +63,10 @@ class Igra():
                             self.polje[na_vrsti][vrstica + self.ladjice[na_vrsti][indeks]][stolpec - 1] = -2
                     if stolpec + 1 in range(0, 10):
                         self.polje[na_vrsti][i][stolpec + 1] = -2  # Označi mesta desno od ladjice. 
-                        if vrstica - 1 in range(0, 10):
-                            self.polje[na_vrsti][vrstica - 1][stolpec + 1] = -2  # Označi mesto desno zgoraj. 
-                        if vrstica + self.ladjice[na_vrsti][indeks] in range(0, 10):
-                            self.polje[na_vrsti][vrstica + self.ladjice[na_vrsti][indeks]][stolpec + 1] = -2  # Označi mesto desno zgoraj. 
+                        if vrstica - 1 in range(0, 10):  # Označi mesto desno zgoraj. 
+                            self.polje[na_vrsti][vrstica - 1][stolpec + 1] = -2  
+                        if vrstica + self.ladjice[na_vrsti][indeks] in range(0, 10):  # Označi mesto desno zgoraj.
+                            self.polje[na_vrsti][vrstica + self.ladjice[na_vrsti][indeks]][stolpec + 1] = -2   
                 return True
         return False
 
@@ -83,6 +83,7 @@ class Igra():
             # Preverimo in shranimo, če je zadeta ladjica potopljena. 
             if self.ladjice[na_vrsti][zadeta] == 0: 
                 self.st_nepotopljenih[na_vrsti] -= 1
+                # tuki lahko dodam še iste pogoje kot zgoraj da zabeleži polja okoli potopljene ladjice
                 # Preverimo ali smo potopili že vse.
                 if self.st_nepotopljenih[na_vrsti] == 0: 
                     return 'zmaga'

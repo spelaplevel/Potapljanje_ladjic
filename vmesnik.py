@@ -1,6 +1,6 @@
 import model
 Vprašaj uporabnika, kam želi postavit ladjice. 
-nova_igra = modul.Igra(stevilo_ladjic=10, ladice=[4, 3, 3, 2, 2, 2, 1, 1, 1, 1])
+nova_igra = model.Igra(stevilo_ladjic=10, ladice=[4, 3, 3, 2, 2, 2, 1, 1, 1, 1])
 
 # postavljanje ladic
 for i in ladjice:
