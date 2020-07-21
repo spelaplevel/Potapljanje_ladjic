@@ -17,8 +17,11 @@ class Igra():
         self.st_nepotopljenih = [st_nepotopljenih] * 2
         self.ladjice = [ladjice] * 2
     
-    def ladje(igralec: bool):
+    def ladje(self, igralec: bool):
         return self.ladjice[igralec]
+
+    def zgodovina(self, igralec: bool):
+        return self.zgodovina_strelov[igralec]
 
     def postavi(self, postavitev, vrstica, stolpec, indeks, na_vrsti): 
         '''
@@ -39,9 +42,9 @@ class Igra():
                     if vrstica - 1 in range(0, 10):
                         self.polje[na_vrsti][vrstica - 1][i] = -2  # Označi mesta nad ladjico.
                         if stolpec - 1 in range(0, 10):  # Označi mesto levo zgoraj.
-                            self.polje[na_vrsti][vrsica - 1][stolpec - 1] = -2
+                            self.polje[na_vrsti][vrstica - 1][stolpec - 1] = -2
                         if stolpec + self.ladjice[na_vrsti][indeks] in range(0, 10):  # Označi mesto desno zgoraj.
-                            self.polje[na_vrsti][vrstica - 1][stolpec + self.ladjica[na_vrsti][indeks]] = -2
+                            self.polje[na_vrsti][vrstica - 1][stolpec + self.ladjice[na_vrsti][indeks]] = -2
                     if vrstica + 1 in range(0, 10):
                         self.polje[na_vrsti][vrstica + 1][i] = -2  # Označi mesta pod ladjico.
                         if stolpec - 1 in range(0, 10):  # Označi mesto levo spodaj.
