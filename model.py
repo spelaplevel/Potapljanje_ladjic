@@ -16,6 +16,9 @@ class Igra():
         self.zgodovina_strelov = [[[-1] * 10 for i in range(10)], [[-1] * 10 for i in range(10)]]
         self.st_nepotopljenih = [st_nepotopljenih] * 2
         self.ladjice = [ladjice] * 2
+    
+    def ladje(igralec: bool):
+        return self.ladjice[igralec]
 
     def postavi(self, postavitev, vrstica, stolpec, indeks, na_vrsti): 
         '''
