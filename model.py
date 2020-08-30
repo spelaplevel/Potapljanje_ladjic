@@ -18,7 +18,7 @@ class Igra():
         self.zgodovina_strelov = [
             [[-1] * 10 for i in range(10)], [[-1] * 10 for i in range(10)]]
         self.st_nepotopljenih = [len(ladjice), len(ladjice)]
-        # med igro služi kot življenske točke ladice, prej pa kot dolžina ladice
+        # Med igro služi kot življenjske točke ladjice, prej pa kot dolžina ladjice.
         self.ladjice = [ladjice[:], ladjice[:]]
         
 
@@ -28,7 +28,7 @@ class Igra():
         self.zgodovina_strelov = [
             [[-1] * 10 for i in range(10)], [[-1] * 10 for i in range(10)]]
         self.st_nepotopljenih = [len(ladjice), len(ladjice)]
-        # med igro služi kot življenske točke ladice, prej pa kot dolžina ladice
+        # Med igro služi kot življenjske točke ladjice, prej pa kot dolžina ladjice.
         self.ladjice = [ladjice[:], ladjice[:]]
 
     def ladje(self, igralec: bool):
@@ -126,7 +126,6 @@ class Igra():
             # Preverimo in shranimo, če je zadeta ladjica potopljena.
             if self.ladjice[na_vrsti][zadeta] == 0:
                 self.st_nepotopljenih[na_vrsti] -= 1
-                # tuki lahko dodam še iste pogoje kot zgoraj da zabeleži polja okoli potopljene ladjice
                 # Preverimo ali smo potopili že vse.
                 if self.st_nepotopljenih[na_vrsti] == 0:
                     return 'zmaga'
@@ -137,7 +136,6 @@ class Igra():
             return 'zgrešena'
 
 class Streznik:
-    #vislice
     def __init__(self):
         self.igre = {}  
     def prost_id_igre(self):
@@ -150,6 +148,5 @@ class Streznik:
         id = self.prost_id_igre()
         igra = Igra(ladjice)
         self.igre[id] = [igra]
-        print('PAZIIIIIIIIIIIIIIIIIIIIII')
         print(igra)
         return id

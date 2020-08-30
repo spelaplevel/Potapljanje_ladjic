@@ -6,11 +6,12 @@ SKRIVNOST = 'skrivnost'
 
 standardne_ladje = [2,5]
 
-# povzeto po viru
+# Povzeto po viru.
 def id():
     try:
         id_piskotek = int(bottle.request.get_cookie('id_igre', secret=SKRIVNOST))
-    except: # če ne moremo pridobiti piškotka, ker je uporabnik nov
+    # Če ne moremo pridobiti piškotka, ker je uporabnik nov: 
+    except:
         id_piskotek = streznik.nova_igra(standardne_ladje)
         bottle.response.set_cookie(
             'id_igre', str(id_piskotek), secret=SKRIVNOST, path='/')
@@ -19,7 +20,6 @@ def id():
         bottle.response.set_cookie(
             'id_igre', str(id_piskotek), secret=SKRIVNOST, path='/')
     return id_piskotek
-
 
 def pridobi_igro():
     id_igre = streznik.igre.get(id())
@@ -33,12 +33,12 @@ def pridobi_igro():
 
     return id_igre
 
-
-@bottle.route('/static/<filename>', name='static') # css datoteke so v mapi static
+# V mapi static so css datoteke. 
+@bottle.route('/static/<filename>', name='static')
 def server_static(filename):
     return bottle.static_file(filename, root='static')
 
-@bottle.get('/') #ta del ne potrebuje piškotkov
+@bottle.get('/') # Ta del ne potrebuje piškotkov. 
 def domov_get():
     return bottle.template('domov.html', get_url=bottle.url)
 
@@ -66,20 +66,17 @@ def offline_post():
 
     bottle.redirect('/postavljanje_offline/')
 
-    
-
 @bottle.post('/nova_igra/')
 def zgodovina_post():
-    if list(bottle.request.forms.keys())[0] == 'offline':  # pritisnili so prvi gumb
+    if list(bottle.request.forms.keys())[0] == 'offline':  # Pritisnil je prvi gumb. 
         igra = pridobi_igro()[0]
         print(f'igra: {type(igra)}')
-        igra.__init__([3,2]) # začnemo NOVO igro
+        igra.__init__([3,2]) # Začnemo NOVO igro. 
         bottle.redirect('/postavljanje_offline/')
     else:
         pass
         #online
     
-
 bottle.run(debug=True, reloader=True, host='localhost')
 
 '''
