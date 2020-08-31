@@ -8,6 +8,7 @@ class Igra():
      primer seznama: ladjice = [2,4,4,5]
 
      zgodovina_strelov[i]: plošča kamor si i-ti igralec označuje uspele in neuspele strele
+     zgodovina_strelov[i][vrstica][stolpec] = -1: sem še nismo ciljali
      zgodovina_strelov[i][vrstica][stolpec] = 0: zgrešena
      zgodovina_strelov[i][vrstica][stolpec] = 1: zadeta
     '''
@@ -33,8 +34,17 @@ class Igra():
         Funkcija postavi ladjico v polje tako da z indeksom ladjice označi mesta v polju, kjer ladjica stoji.
         '''
         if vrstica in range(0, 10) and stolpec in range(0, 10):
-            if self.polje[na_vrsti][vrstica][stolpec] != -1:
-                return False
+            # Preverimo, da polja kjer bo ladjica še niso zasedena:
+            if not postavitev: # vodoravne
+                kaj_zasede = zip([vrstica] * 10, [stolpec + j for j in range(self.ladjice[na_vrsti][indeks])])
+                for vrstica, stolpec in kaj_zasede:
+                    if self.polje[na_vrsti][vrstica][stolpec] != -1:
+                        return False
+            if postavitev: # navpične
+                kaj_zasede = zip([vrstica + j for j in range(self.ladjice[na_vrsti][indeks])], [stolpec] * 10)
+                for vrstica, stolpec in kaj_zasede:
+                    if self.polje[na_vrsti][vrstica][stolpec] != -1:
+                        return False
             # Postavimo vodoravne ladjice:
             if postavitev == 0 and stolpec + self.ladjice[na_vrsti][indeks] <= 10:
                 # Postavi ladjico.
