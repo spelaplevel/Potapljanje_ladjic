@@ -22,15 +22,6 @@ class Igra():
         self.ladjice = [ladjice[:], ladjice[:]]
         
 
-    def resetiraj(self, ladjice):
-        self.polje = [
-            [[-1] * 10 for i in range(10)], [[-1] * 10 for i in range(10)]]
-        self.zgodovina_strelov = [
-            [[-1] * 10 for i in range(10)], [[-1] * 10 for i in range(10)]]
-        self.st_nepotopljenih = [len(ladjice), len(ladjice)]
-        # Med igro služi kot življenjske točke ladjice, prej pa kot dolžina ladjice.
-        self.ladjice = [ladjice[:], ladjice[:]]
-
     def ladje(self, igralec: bool):
         return self.ladjice[igralec]
 
