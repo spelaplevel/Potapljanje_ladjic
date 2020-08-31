@@ -76,6 +76,7 @@ class Igra():
                             self.polje[na_vrsti][vrstica + 1][stolpec +
                                                               self.ladjice[na_vrsti][indeks]] = -2
                 return True
+                
             # Postavimo navpične ladjice:
             elif postavitev == 1 and vrstica + self.ladjice[na_vrsti][indeks] <= 10:
                 # Postavi ladjico.
@@ -135,16 +136,17 @@ class Igra():
 
 class Streznik:
     def __init__(self):
-        self.igre = {}  
+        self.igre = {}
+        
     def prost_id_igre(self):
         if len(self.igre) == 0:
-            return 0
+            return 0 # Tu lahko vrnemo karkoli. 
         else:
             return max(self.igre.keys()) + 1
 
     def nova_igra(self, ladjice):
         id = self.prost_id_igre()
         igra = Igra(ladjice)
-        self.igre[id] = [igra]
+        self.igre[id] = [igra] # Ustvarimo novo igro v začetnem stanju. 
         print(igra)
         return id
