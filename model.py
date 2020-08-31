@@ -35,16 +35,13 @@ class Igra():
         '''
         if vrstica in range(0, 10) and stolpec in range(0, 10):
             # Preverimo, da polja kjer bo ladjica še niso zasedena:
-            if not postavitev: # vodoravne
+            kaj_zasede = zip([vrstica + j for j in range(self.ladjice[na_vrsti][indeks])], [stolpec] * 10)
+            if not postavitev:             
                 kaj_zasede = zip([vrstica] * 10, [stolpec + j for j in range(self.ladjice[na_vrsti][indeks])])
-                for vrstica, stolpec in kaj_zasede:
-                    if self.polje[na_vrsti][vrstica][stolpec] != -1:
-                        return False
-            if postavitev: # navpične
-                kaj_zasede = zip([vrstica + j for j in range(self.ladjice[na_vrsti][indeks])], [stolpec] * 10)
-                for vrstica, stolpec in kaj_zasede:
-                    if self.polje[na_vrsti][vrstica][stolpec] != -1:
-                        return False
+            for st_vrstice, st_stolpca in kaj_zasede:
+                if self.polje[na_vrsti][st_vrstice][st_stolpca] != -1:
+                    return False
+
             # Postavimo vodoravne ladjice:
             if postavitev == 0 and stolpec + self.ladjice[na_vrsti][indeks] <= 10:
                 # Postavi ladjico.
