@@ -56,17 +56,24 @@ def navodila_get():
 def offline_post():
     igra = pridobi_igro()[0]
 
-    ime_gumba = list(bottle.request.forms.keys())[0] # 'i_j' , '1_4'
-    vrstica = int(ime_gumba.split('_')[0])
-    stolpec = int(ime_gumba.split('_')[1])
-    postavitev = int(ime_gumba.split('_')[2])
-    igra.postavi(postavitev, vrstica, stolpec, 0, 0)
+    ime_gumba = list(bottle.request.forms.keys())[0]  # 'i_j' , '1_4'
+    postavitev = 0
+    
+    if ime_gumba == "spremeni_postavitev":
+        #spremeni postavitev
+        #bottle.redirect('/postavljanje_offline/')
+        pass
+    else:
+        vrstica = int(ime_gumba.split('_')[0])
+        stolpec = int(ime_gumba.split('_')[1])
+        igra.postavi(postavitev, vrstica, stolpec, 0, 0)
+        bottle.redirect('/postavljanje_offline/')
+
+    #postavitev = int(ime_gumba.split('_')[2])
 
     #igra.index += 1 oziroma ga daš na 0, če je velčji od dolžine tabele
     #če g daš na 0, greš nanaslednjega igralca
     #če si na zadnjem igralcu, se premakneš na /igra_offline/ al pa kej potobnega
-
-    bottle.redirect('/postavljanje_offline/')
 
 @bottle.post('/nova_igra/')
 def zgodovina_post():
