@@ -22,6 +22,8 @@ class Igra():
         # Med igro služi kot življenjske točke ladjice, prej pa kot dolžina ladjice.
         self.ladjice = [ladjice[:], ladjice[:]]
         self.trenutna_postavitev = 0
+        self.indeks_trenutne_ladjice = 0
+        self.igralec_na_vrsti = 0
         
 
     def ladje(self, igralec: bool):

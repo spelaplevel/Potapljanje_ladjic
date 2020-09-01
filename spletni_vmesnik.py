@@ -56,9 +56,10 @@ def navodila_get():
 def offline_post():
    
     igra = pridobi_igro()[0]
-
+    indeks = igra.indeks_trenutne_ladjice
+    igralec_na_vrsti = igra.igralec_na_vrsti
     ime_gumba = list(bottle.request.forms.keys())[0]  # 'i_j' , '1_4'
-    
+
     if ime_gumba == "spremeni_postavitev":
         igra.trenutna_postavitev = not igra.trenutna_postavitev
         bottle.redirect('/postavljanje_offline/')
@@ -66,8 +67,23 @@ def offline_post():
         vrstica = int(ime_gumba.split('_')[0])
         stolpec = int(ime_gumba.split('_')[1])
         postavitev = igra.trenutna_postavitev
-        igra.postavi(postavitev, vrstica, stolpec, 0, 0)
-        bottle.redirect('/postavljanje_offline/')
+        igra.postavi(postavitev, vrstica, stolpec, indeks, igralec_na_vrsti)
+
+        # Povečamo indeks, da postavimo naslednjo ladjico. 
+        igra.indeks_trenutne_ladjice = indeks + 1
+        print(igra.indeks_trenutne_ladjice)
+
+        if igra.indeks_trenutne_ladjice in range(0, len(igra.ladjice[0])):
+            pass
+            print("Špelka je končno malo bolj veselka!")
+        else:
+            igra.indeks_trenutne_ladjice = 0
+            igra.igralec_na_vrsti = igralec_na_vrsti + 1
+        if igralec_na_vrsti in range(0, 1):
+            bottle.redirect('/postavljanje_offline/')
+        else:
+            bottle.redirect('/navodila/') #potem premaknem na kaj drugega, zaenkrat tko samo tok da vidm, drugo polje!!!
+        
 
     #igra.index += 1 oziroma ga daš na 0, če je velčji od dolžine tabele
     #če g daš na 0, greš nanaslednjega igralca
@@ -78,7 +94,7 @@ def zgodovina_post():
     if list(bottle.request.forms.keys())[0] == 'offline':  # Pritisnil je prvi gumb. 
         igra = pridobi_igro()[0]
         print(f'igra: {type(igra)}')
-        igra.__init__([3,2]) # Začnemo NOVO igro. 
+        igra.__init__(standardne_ladje) # Začnemo NOVO igro. 
         bottle.redirect('/postavljanje_offline/')
     else:
         pass
@@ -88,12 +104,14 @@ bottle.run(debug=True, reloader=True, host='localhost')
 
 '''
 TODO : 
-v postavljanje morš dat neko opcijo da ibere a bo verikalna al horizontalna
 
+potem ko en igralec postavi svoje ladjice, pokaži novo polje še za drugega
 
 self.trenutni index ladice in self. na vrsti je  daš v Igra(), in potem model.Igra() vednio ve , kdo je na vrsti in katero ladijco postavljamo
 
 nato funkcija postavi offline
+
+
 
 na koncu naj se izpiše zmagovalec
 
