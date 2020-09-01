@@ -95,6 +95,8 @@ self.trenutni index ladice in self. na vrsti je  daš v Igra(), in potem model.I
 
 nato funkcija postavi offline
 
+na koncu naj se izpiše zmagovalec
+
 lep html
 
 '''
