@@ -23,12 +23,25 @@ Postavite ladice pa ne bit invalidi pls
                      
                  
                 % end
-                type="submit", name="{{str(i) + '_' + str(j)  }}">{{str(i) + '_' + str(j)  }}</button>
+                type="submit", name="{{str(i) + '_' + str(j)  }}">{{str(i) + '_' + str(j)}}</button>
             </td>
             % end
         </tr>
     % end
 </table>
-</form>
+
 <br>
+
+    <table class="postavitev_ladjic">
+        <tr>
+            % for i in range(2):
+            <td>
+                <button type="submit", name="{{str(i)}}">{{'vodoravna' if i == 0 else 'navpična'}}</button>
+            </td>
+            % end
+        </tr>
+    </table>
+
+</form>
+
 <br>

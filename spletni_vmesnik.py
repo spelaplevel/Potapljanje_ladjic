@@ -55,10 +55,12 @@ def navodila_get():
 @bottle.post('/postavi_offline/')
 def offline_post():
     igra = pridobi_igro()[0]
+
     ime_gumba = list(bottle.request.forms.keys())[0] # 'i_j' , '1_4'
     vrstica = int(ime_gumba.split('_')[0])
     stolpec = int(ime_gumba.split('_')[1])
-    igra.postavi(0, vrstica, stolpec, 0, 0)
+    postavitev = int(ime_gumba.split('_')[2])
+    igra.postavi(postavitev, vrstica, stolpec, 0, 0)
 
     #igra.index += 1 oziroma ga daš na 0, če je velčji od dolžine tabele
     #če g daš na 0, greš nanaslednjega igralca
