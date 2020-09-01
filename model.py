@@ -21,6 +21,7 @@ class Igra():
         self.st_nepotopljenih = [len(ladjice), len(ladjice)]
         # Med igro služi kot življenjske točke ladjice, prej pa kot dolžina ladjice.
         self.ladjice = [ladjice[:], ladjice[:]]
+        self.trenutna_postavitev = 0
         
 
     def ladje(self, igralec: bool):
@@ -39,7 +40,7 @@ class Igra():
             if not postavitev:             
                 kaj_zasede = zip([vrstica] * 10, [stolpec + j for j in range(self.ladjice[na_vrsti][indeks])])
             for st_vrstice, st_stolpca in kaj_zasede:
-                if self.polje[na_vrsti][st_vrstice][st_stolpca] != -1:
+                if not(st_vrstice in range(0, 10) and st_stolpca in range(0, 10)) or (self.polje[na_vrsti][st_vrstice][st_stolpca] != -1):
                     return False
 
             # Postavimo vodoravne ladjice:
@@ -76,7 +77,7 @@ class Igra():
                             self.polje[na_vrsti][vrstica + 1][stolpec +
                                                               self.ladjice[na_vrsti][indeks]] = -2
                 return True
-                
+
             # Postavimo navpične ladjice:
             elif postavitev == 1 and vrstica + self.ladjice[na_vrsti][indeks] <= 10:
                 # Postavi ladjico.
