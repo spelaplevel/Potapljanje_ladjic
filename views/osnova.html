@@ -1,25 +1,51 @@
-<!DOCTYPE html>
-<html lang="sl">
+<!doctype html>
+<html lang="en">
     <head>
-        <title>Potapljanje ladjic</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet"  href="style.css"/>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <!-- Povezava na osebni CSS -->
+        <link rel="stylesheet"  href="static/style.css"/>
+        
+        <!-- CSS datoteka od templata -->
+        <link rel="stylesheet" href="static/template.css">
+
+        <!-- Ostale dodatne stvari -->
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <meta charset="UTF-8">
         <meta name="description" content="spletna igra potapljanja ladjic">
         <meta name="keywords" content="ladjice, potapljanje">
         <meta name="author" content="Špela Plevel">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Potapljanje ladjic</title>
     </head>
+
+
+
+
+
     <body>
-        <!-- Orodna vrstica  -->
-        <div class="orodna_vrstica">
-            <a class="active" href="/"><b>Domov</b></a>
-            <a class="active" href="/navodila/"><b>Navodila igre</b></a>
-        </div>
+        <!--NAVIGACIJSKA VRSTICA-->
+        <nav class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between nav-masthead">
+                <a class="py-2 d-none d-md-inline-block" href="/">Domov</a>
+                <a class="py-2 d-none d-md-inline-block" href="/navodila/">Navodila igre</a>
+            </div>
+        </nav>
+
 
         {{!base}}
 
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>

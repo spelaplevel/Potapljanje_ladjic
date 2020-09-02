@@ -1,9 +1,40 @@
 % rebase('osnova.html')
 
-Izberi način igre:
-<br>
-<form action="/nova_igra/" method="POST">
-    <button class="gumb" type="submit" name="offline">Igra brez povezave (offline)</button>
-    <br>
-    <button class="gumb" type="submit" name='online'>Online igra</button> 
- </form>
+    <!--GLAVNI (čez celo stran)-->
+    <div class="view position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" style="background-image: url('https://www.maxpixel.net/static/photo/1x/Aged-Boat-Shipwreck-Wreck-Rusty-Ship-Clouds-Sea-4059620.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-3 font-weight-normal text-white">Potapljanje ladjic</h1>
+
+        <!-- Gumb za vstop v igro-->
+        <form action="/nova_igra/" method="POST">
+            <button class="btn btn-dark p-3" type="submit" name="offline">Vstop v igro</button>
+        </form>
+        
+      </div>
+    </div>
+
+    <!--POLJE NAVODILA-->
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="background-image: url('https://p0.pikist.com/photos/5/906/vintage-helm-sextant-sailing-ships-map-anchor-nautical-antique-navigation.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; opacity:0.85;">
+        <div class="my-3 py-3">
+          <h2 class="display-5">NAVODILA ZA IGRANJE</h2>
+          <p class="lead">S klikom na spodnjo povezavo se lahko premaknete na stran, kjer si preberete podrobna navodila za igranje.</p>
+        </div>
+    
+        <a class="btn btn-light my-3" href="/navodila/" role="button">Preberi navodila</a>
+      </div>
+
+      <!--POLJE O AVTORICI-->
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-white text-center overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/proxy/fHAGKyzGPY9qRwdltVuTphphezYpTr-OVK14qHNhd2kUsF_X66c1ErviajMLzScXKZSHK70zpW7prziIcPYSeuDB_RhYPAZqL0W-0n3PoFKbetSoBHZtVSzaBEh4H23tSkSJSDHfK2RDgDnWyuTVX5E'); background-repeat: no-repeat; background-size: cover; background-position: center center; opacity:0.85;">
+        <div class="my-3 p-3">
+          <h2 class="display-5">O PROJEKTU</h2>
+          <p class="lead">Projekt je bil narejen v okviru predmeta Uvod v programiranje na Fakulteti za matematiko in fiziko.</p>
+        </div>
+        
+      </div>
+    </div>
+
+
+
+
+

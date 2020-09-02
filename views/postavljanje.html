@@ -1,45 +1,44 @@
 % rebase('osnova.html')
 
-Postavi ladjice v skladu z navodili. 
-<form action="/postavi_offline/", method="POST">
-<table class='igralna_plosca'>
-    % for i in range(10):
-        <tr>
-            % for j in range(10):
-            
-                % if igra.polje[na_vrsti][i][j] == -2:
-                 <td style="background-color: red;">
-                    <button style="background-color: red;"
-                     
-                 
-                % elif igra.polje[na_vrsti][i][j] >= 0:
-                 <td style="background-color: rgb(0, 0, 0);">
-                    <button style="background-color: black;"
-                     
-                 
-                % else:
-                 <td>
-                    <button
-                     
-                 
+<div class="position-relative overflow-hidden p-5 m-5 text-center bg-light">
+    <div class="my-2 px-3">
+        <h3>Postavite ladjice v skladu z navodili. </h3>
+
+        <form action="/postavi_offline/", method="POST" style="text-align: center;">
+            <table class='igralna_plosca'>
+                % for i in range(10):
+                    <tr>
+                        % for j in range(10):
+                        
+                            % if igra.polje[na_vrsti][i][j] == -2:
+                            <td style="background-color: ;">
+                                <button class="gumb" style="background-color: red;"
+                                
+                            % elif igra.polje[na_vrsti][i][j] >= 0:
+                            <td style="background-color: ;">
+                                <button style="background-color: black;"
+                                
+                            % else:
+                            <td>
+                                <button
+                                
+                            % end
+                            type="submit", name="{{str(i) + '_' + str(j)  }}">{{str(i) + '_' + str(j)}}</button>
+                        </td>
+                        % end
+                    </tr>
                 % end
-                type="submit", name="{{str(i) + '_' + str(j)  }}">{{str(i) + '_' + str(j)}}</button>
-            </td>
-            % end
-        </tr>
-    % end
-</table>
+            </table>
 
-<br>
+            <br>
 
-    <table class="postavitev_ladjic">
-        <tr>
-            <td>
-                <button type="submit", name="spremeni_postavitev">Spremeni postavitev</button>
-            </td>
-        </tr>
-    </table>
-
-</form>
-
-<br>
+            <table class="postavitev_ladjic">
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-primary" name="spremeni_postavitev">Spremeni postavitev naslednje ladjice</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
