@@ -76,13 +76,13 @@ def offline_post():
         # Preverimo ali je igralec postavil že vse svoje ladjice. 
         if igra.indeks_trenutne_ladjice in range(0, len(igra.ladjice[0])):
             pass
-            print("Špelka je končno malo bolj veselka!")
+            print("Nismo še postavili vseh")
         else:
             igra.indeks_trenutne_ladjice = 0
             igra.igralec_na_vrsti = igralec_na_vrsti + 1
 
         # Preverimo ali sta že oba igralca posatvila ladjice.
-        if igralec_na_vrsti in range(0, 1):
+        if igralec_na_vrsti in range(0, 2):
             bottle.redirect('/postavljanje_offline/')
         else:
             bottle.redirect('/navodila/') #potem premaknem na kaj drugega, zaenkrat tko samo tok da vidm, drugo polje!!!
