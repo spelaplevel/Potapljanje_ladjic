@@ -32,7 +32,7 @@
             <table class="postavitev_ladjic">
                 <tr>
                     <td>
-                        Trenunto ladice postavljamo {{'nenevertikalno' if igra.trenutna_postavitev else 'nejavertikalno'}}
+                        Trenunto ladjice postavljamo {{'navpično' if igra.trenutna_postavitev else 'vodoravno'}}
                     </td>
                 </tr>
                 <tr>
@@ -43,7 +43,7 @@
                 <tr>
                     <td>
                         % if igra.indeks_trenutne_ladjice >= 0:
-                            <button type="submit" class="btn btn-primary" name="nasledni_igralec" disabled>(Postaviti morate še {{str(len(igra.ladjice[0]) - igra.indeks_trenutne_ladjice) + ' ladic'}})</button>
+                            <button type="submit" class="btn btn-primary" name="nasledni_igralec" disabled>Postaviti moraš še {{str(len(igra.ladjice[0]) - igra.indeks_trenutne_ladjice) + ' ladjic'}}</button>
                        %else :
                        <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Naslednji igralec</button>
                         % end
