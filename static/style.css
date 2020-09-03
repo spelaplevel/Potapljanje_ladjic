@@ -2,9 +2,26 @@ body{
     font-family: 'Roboto';
 }
 .igralna_plosca tr, td{
-    border: 1px solid black;
+    border: none;
+    padding: none;
+    margin: none;
 }
 .igralna_plosca  td:hover{
     background-color: #4e5d5f;
 }
 
+.igralna_plosca button{
+    padding: none;
+    margin: none;
+    border: none;
+    box-shadow: none;
+}
+.druga_plosca  td{
+    border: 1px solid black
+}
+.druga_plosca {
+    border: 3px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 72px;
+}

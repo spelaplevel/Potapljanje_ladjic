@@ -1,0 +1,18 @@
+% rebase('osnova.html')
+% if korak=='velikost':
+<form action="/nastavi_velikost/" method="POST">
+    <label for="quantity">Število ladnjic na igralca:</label>
+    <input type="number" id="quantity" name="quantity" min="1" max="10">
+    <input type="submit" value="Naprej">
+  </form>
+
+% elif korak=='for':
+Število ladnjic: {{len(igra.standardne_ladje)}}
+<br>
+<form action="/nastavi_dolzino/" method="POST">
+    <label for="quantity">Velikost ladnjice številka {{igra.indeks_trenutne_ladjice + 1}}</label>
+    <input type="number" id="quantity" name="quantity" min="1" max="10">
+    <input type="submit" value="Naprej">
+  </form>
+
+%end

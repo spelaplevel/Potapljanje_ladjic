@@ -5,21 +5,18 @@
         <h3>Postavite ladjice v skladu z navodili. </h3>
 
         <form action="/postavi_offline/", method="POST" style="text-align: center;">
-            <table class='igralna_plosca'>
+            <table class='igralna_plosca' style="margin-left: auto; margin-right: auto;">
                 % for i in range(10):
                     <tr>
                         % for j in range(10):
-                        
+                            <td>
                             % if igra.polje[na_vrsti][i][j] == -2:
-                            <td style="background-color: ;">
-                                <button class="gumb" style="background-color: red;"
+                                <button class="gumb" style="background-color: rgb(216, 179, 179);"
                                 
                             % elif igra.polje[na_vrsti][i][j] >= 0:
-                            <td style="background-color: ;">
                                 <button style="background-color: black;"
                                 
                             % else:
-                            <td>
                                 <button
                                 
                             % end
@@ -35,7 +32,21 @@
             <table class="postavitev_ladjic">
                 <tr>
                     <td>
+                        Trenunto ladice postavljamo {{'nenevertikalno' if igra.trenutna_postavitev else 'nejavertikalno'}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <button type="submit" class="btn btn-primary" name="spremeni_postavitev">Spremeni postavitev naslednje ladjice</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        % if igra.indeks_trenutne_ladjice >= 0:
+                            <button type="submit" class="btn btn-primary" name="nasledni_igralec" disabled>(Postaviti morate še {{str(len(igra.ladjice[0]) - igra.indeks_trenutne_ladjice) + ' ladic'}})</button>
+                       %else :
+                       <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Naslednji igralec</button>
+                        % end
                     </td>
                 </tr>
             </table>

@@ -1,28 +1,89 @@
 % rebase('osnova.html')
- 
-<table class='igralna_plosca'>
+<form action="/igraj_offline/" method="POST">
+ <table class='igralna_plosca' style="margin-left: auto; margin-right: auto;">
+<tr>
+<td>
+<table class='igralna_plosca' style="margin-left: auto; margin-right: auto;"'>
     % for i in range(10):
         <tr>
             % for j in range(10):
-            <td>
-                Test
+                <td>
+                % if igra.zgodovina_strelov[not na_vrsti][i][j] == 1:
+                % if igra.ladjice[not na_vrsti][igra.polje[not na_vrsti][i][j]] <= 0:
+                <button style="background-color: rgb(255, 0, 0);" 
+                    %else:
+                    <button class="gumb" style="background-color: rgb(255, 230, 0);"
+                    % end
+                    % elif igra.zgodovina_strelov[not na_vrsti][i][j] == 0:
+                <button class="gumb" style="background-color: rgb(3, 112, 21);"
+                % else:
+                    <button
+                    
+                % end
+                type="submit", name="{{str(i) + '_' + str(j)  }}">{{str(i) + '_' + str(j)}}</button>
             </td>
             % end
         </tr>
     % end
-</table>
+</table></td>
+</tr>
+<tr>
 
-<br>
-<br>
-
-<table class='igralna_plosca'>
+<td>
+<table class='druga_plosca' style="margin-left: auto; margin-right: auto;">
     % for i in range(10):
         <tr>
             % for j in range(10):
-            <td>
-                Test
-            </td>
+                
+                    
+                % if igra.polje[na_vrsti][i][j] >= 0 and igra.zgodovina_strelov[na_vrsti][i][j] == -1:
+                    <td style="background-color: black;
+                % elif igra.zgodovina_strelov[na_vrsti][i][j] == 1:
+                    % if igra.ladjice[na_vrsti][igra.polje[na_vrsti][i][j]] <= 0:
+                    <td style="background-color: rgb(255, 0, 0);
+                    %else:
+                    <td style="background-color: rgb(255, 221, 30);
+                    % end
+                    
+                % elif igra.zgodovina_strelov[na_vrsti][i][j] == 0:
+                    <td style="background-color: rgb(3, 112, 21);
+                % else:
+                    <td style="
+                    
+                % end
+                border: 1px solid black;  color: white">{{str(i) + '_' + str(j)}}</td>
+            
             % end
         </tr>
     % end
 </table>
+</td>
+</tr>
+</table>
+
+
+
+<table style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td style="font-size: 30px">
+            {{tekst.upper()}}
+        </td>
+    </tr>
+                <tr>
+                    <td>
+                        Število potopljenih: {{ len([i for i in igra.ladjice[not na_vrsti] if i == 0])}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        % if igra.indeks_trenutne_ladjice >= 0:
+                            <button type="submit" class="btn btn-primary" name="nasledni_igralec" disabled>(Najprej kej ustrel, nato greš lahgka naprej)</button>
+                      %elif igra.indeks_trenutne_ladjice == -2:
+                      <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Nazaj na menu</button>
+                            %else :
+                       <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Naslednji igralec</button>
+                        % end
+                    </td>
+                </tr>
+            </table>
+</form>
