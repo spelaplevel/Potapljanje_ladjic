@@ -4,7 +4,7 @@ import bottle
 streznik = model.Streznik()
 SKRIVNOST = 'skrivnost'
 
-standardne_ladje = [2,2,3]
+standardne_ladje = [2, 2, 3]
 
 # Povzeto po viru.
 def id():
@@ -133,7 +133,7 @@ def igra_get(tekst):
 def igraj_offline():
     igra = pridobi_igro()[0]
     ime_gumba = list(bottle.request.forms.keys())[0]
-    if igra.indeks_trenutne_ladjice == -1: # smo že naredili potezo in sedaj čakamo, da uporabnik pritisne gumb naslednji igralec
+    if igra.indeks_trenutne_ladjice == -1: # Smo že naredili potezo in sedaj čakamo, da uporabnik pritisne gumb 'naslednji igralec'.
         if ime_gumba == 'naslednji_igralec':
             igra.indeks_trenutne_ladjice = 0
             igra.igralec_na_vrsti = not igra.igralec_na_vrsti

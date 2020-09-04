@@ -24,7 +24,7 @@ class Igra():
         self.trenutna_postavitev = 0
         self.indeks_trenutne_ladjice = 0
         self.igralec_na_vrsti = 0
-        self.standardne_ladje = [2,2,3]
+        self.standardne_ladje = [2, 2, 3]
         
 
     def ladje(self, igralec: bool):
