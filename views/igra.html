@@ -1,89 +1,94 @@
 % rebase('osnova.html')
-<form action="/igraj_offline/" method="POST">
- <table class='igralna_plosca' style="margin-left: auto; margin-right: auto;">
-<tr>
-<td>
-<table class='igralna_plosca' style="margin-left: auto; margin-right: auto;"'>
-    % for i in range(10):
+
+<div class="p-3 mx-3 my-4 text-center bg-light border border-secondary rounded">
+    <div class="my-3 px-3">
+        <h3 class="pb-2">Na zgornjem polju izberite kam želite ustreliti.</h3>
+        <form action="/igraj_offline/" method="POST">
+        <table class='igralna_plosca' style="margin-left: auto; margin-right: auto;">
         <tr>
-            % for j in range(10):
-                <td>
-                % if igra.zgodovina_strelov[not na_vrsti][i][j] == 1:
-                % if igra.ladjice[not na_vrsti][igra.polje[not na_vrsti][i][j]] <= 0:
-                <button style="background-color: rgb(255, 0, 0);" 
-                    %else:
-                    <button class="gumb" style="background-color: rgb(255, 230, 0);"
-                    % end
-                    % elif igra.zgodovina_strelov[not na_vrsti][i][j] == 0:
-                <button class="gumb" style="background-color: rgb(3, 112, 21);"
-                % else:
-                    <button
-                    
-                % end
-                type="submit", name="{{str(i) + '_' + str(j)  }}">{{str(i) + '_' + str(j)}}</button>
-            </td>
-            % end
-        </tr>
-    % end
-</table></td>
-</tr>
-<tr>
-
-<td>
-<table class='druga_plosca' style="margin-left: auto; margin-right: auto;">
-    % for i in range(10):
-        <tr>
-            % for j in range(10):
-                
-                    
-                % if igra.polje[na_vrsti][i][j] >= 0 and igra.zgodovina_strelov[na_vrsti][i][j] == -1:
-                    <td style="background-color: black;
-                % elif igra.zgodovina_strelov[na_vrsti][i][j] == 1:
-                    % if igra.ladjice[na_vrsti][igra.polje[na_vrsti][i][j]] <= 0:
-                    <td style="background-color: rgb(255, 0, 0);
-                    %else:
-                    <td style="background-color: rgb(255, 221, 30);
-                    % end
-                    
-                % elif igra.zgodovina_strelov[na_vrsti][i][j] == 0:
-                    <td style="background-color: rgb(3, 112, 21);
-                % else:
-                    <td style="
-                    
-                % end
-                border: 1px solid black;  color: white">{{str(i) + '_' + str(j)}}</td>
-            
-            % end
-        </tr>
-    % end
-</table>
-</td>
-</tr>
-</table>
-
-
-
-<table style="margin-left: auto; margin-right: auto;">
-    <tr>
-        <td style="font-size: 30px">
-            {{tekst.upper()}}
-        </td>
-    </tr>
+        <td>
+        <table class='igralna_plosca' style="margin-left: auto; margin-right: auto;">
+            % for i in range(10):
                 <tr>
-                    <td>
-                        Število potopljenih: {{ len([i for i in igra.ladjice[not na_vrsti] if i == 0])}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        % if igra.indeks_trenutne_ladjice >= 0:
-                            <button type="submit" class="btn btn-primary" name="nasledni_igralec" disabled>Naslednji igralec</button>
-                      %elif igra.indeks_trenutne_ladjice == -2:
-                      <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Nazaj na menu</button>
-                            %else :
-                       <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Naslednji igralec</button>
+                    % for j in range(10):
+                        <td>
+                        % if igra.zgodovina_strelov[not na_vrsti][i][j] == 1:
+                        % if igra.ladjice[not na_vrsti][igra.polje[not na_vrsti][i][j]] <= 0:
+                        <button style="background-color: rgb(255, 0, 0);" 
+                            %else:
+                            <button class="gumb" style="background-color: rgb(255, 230, 0);"
+                            % end
+                            % elif igra.zgodovina_strelov[not na_vrsti][i][j] == 0:
+                        <button class="gumb" style="background-color: rgb(3, 112, 21);"
+                        % else:
+                            <button
+                            
                         % end
+                        type="submit", name="{{str(i) + '_' + str(j)  }}">{{str(i) + '_' + str(j)}}</button>
                     </td>
+                    % end
                 </tr>
-            </table>
-</form>
+            % end
+        </table></td>
+        </tr>
+        <tr>
+        
+        <td>
+        <table class='druga_plosca' style="margin-left: auto; margin-right: auto;">
+        <h5 class="pt-3">Lokacija vaših ladjic in strelov nasprotnika:</h5>
+            % for i in range(10):
+                <tr>
+                    % for j in range(10):
+                        
+                            
+                        % if igra.polje[na_vrsti][i][j] >= 0 and igra.zgodovina_strelov[na_vrsti][i][j] == -1:
+                            <td style="background-color: black;
+                        % elif igra.zgodovina_strelov[na_vrsti][i][j] == 1:
+                            % if igra.ladjice[na_vrsti][igra.polje[na_vrsti][i][j]] <= 0:
+                            <td style="background-color: rgb(255, 0, 0);
+                            %else:
+                            <td style="background-color: rgb(255, 221, 30);
+                            % end
+                            
+                        % elif igra.zgodovina_strelov[na_vrsti][i][j] == 0:
+                            <td style="background-color: rgb(3, 112, 21);
+                        % else:
+                            <td style="
+                            
+                        % end
+                        border: 1px solid black;  color: white">{{str(i) + '_' + str(j)}}</td>
+                    
+                    % end
+                </tr>
+            % end
+        </table>
+        </td>
+        </tr>
+        </table>
+
+
+
+        <table style="margin-left: auto; margin-right: auto;">
+            <tr>
+                <td style="font-size: 30px">
+                    {{tekst.upper()}}
+                </td>
+            </tr>
+                        <tr>
+                            <td>
+                                <h6 class="pt-2">Število uspešno potopljenih: {{ len([i for i in igra.ladjice[not na_vrsti] if i == 0])}} </h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                % if igra.indeks_trenutne_ladjice >= 0:
+                                    <button type="submit" class="btn btn-success" name="nasledni_igralec" disabled>Naslednji igralec</button>
+                            %elif igra.indeks_trenutne_ladjice == -2:
+                            <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Nazaj na menu</button>
+                                    %else :
+                            <button type="submit" class="btn btn-success" name="naslednji_igralec" >Naslednji igralec</button>
+                                % end
+                            </td>
+                        </tr>
+                    </table>
+        </form>

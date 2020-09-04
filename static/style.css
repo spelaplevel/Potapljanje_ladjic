@@ -5,7 +5,10 @@ body{
     border: none;
     padding: none;
     margin: none;
+    margin-left: auto; 
+    margin-right: auto;
 }
+
 .igralna_plosca  td:hover{
     background-color: #4e5d5f;
 }

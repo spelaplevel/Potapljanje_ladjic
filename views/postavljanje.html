@@ -1,10 +1,10 @@
 % rebase('osnova.html')
 
-<div class="position-relative overflow-hidden p-5 m-5 text-center bg-light">
-    <div class="my-2 px-3">
-        <h3>Postavite ladjice v skladu z navodili. </h3>
+<div class="p-3 mx-3 my-4 text-center bg-light border border-secondary rounded">
+    <div class="my-3 px-3">
+        <h3 class="pb-2">Postavite ladjice v skladu z navodili. </h3>
 
-        <form action="/postavi_offline/", method="POST" style="text-align: center;">
+        <form action="/postavi_offline/", method="POST">
             <table class='igralna_plosca' style="margin-left: auto; margin-right: auto;">
                 % for i in range(10):
                     <tr>
@@ -29,23 +29,23 @@
 
             <br>
 
-            <table class="postavitev_ladjic">
+            <table style="margin-left: auto; margin-right: auto;" >
                 <tr>
                     <td>
-                        Trenunto ladjice postavljamo {{'navpično' if igra.trenutna_postavitev else 'vodoravno'}}
+                        <h5 text-align: center>Trenunto ladjice postavljamo <b>{{'navpično' if igra.trenutna_postavitev else 'vodoravno'}}</b> </h5>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit" class="btn btn-primary" name="spremeni_postavitev">Spremeni postavitev naslednje ladjice</button>
+                        <button type="submit" class="btn btn-dark" name="spremeni_postavitev">Spremeni postavitev naslednje ladjice</button>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         % if igra.indeks_trenutne_ladjice >= 0:
-                            <button type="submit" class="btn btn-primary" name="nasledni_igralec" disabled>Postaviti moraš še {{str(len(igra.ladjice[0]) - igra.indeks_trenutne_ladjice) + ' ladjic'}}</button>
+                            <button type="submit" class="btn btn-light" name="nasledni_igralec" disabled>Število preostalih ladjic: {{str(len(igra.ladjice[0]) - igra.indeks_trenutne_ladjice)}}</button>
                        %else :
-                       <button type="submit" class="btn btn-primary" name="naslednji_igralec" >Naslednji igralec</button>
+                       <button type="submit" class="btn btn-success mt-3" name="naslednji_igralec" >Naslednji igralec</button>
                         % end
                     </td>
                 </tr>
