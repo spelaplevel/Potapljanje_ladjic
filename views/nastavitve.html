@@ -1,27 +1,26 @@
 % rebase('osnova.html')
 
 <div class="p-3 mx-3 my-4 text-center bg-light border border-secondary rounded">
-        % if korak=='velikost':
-          <form action="/nastavi_velikost/" method="POST">
-              <h2><label for="quantity">Število ladjic na igralca:</label>
-              <input type="number" id="quantity" name="quantity" min="1" max="10" required="required" 
-                oninvalid="this.setCustomValidity('Prosim vnesite željeno število ladjic med 1 in 10.')" oninput="setCustomValidity('')">
-              </h2>
-              <button type="submit" value="Naprej" class="btn btn-dark">Naprej</button>
-            </form>
+  
+  % if korak=='velikost':
+    <form action="/nastavi_velikost/" method="POST">
+      <h2><label for="quantity">Število ladjic na igralca:</label>
+      <input type="number" id="quantity" name="quantity" min="1" max="10" required="required" 
+        oninvalid="this.setCustomValidity('Prosim vnesite željeno število ladjic med 1 in 10.')" oninput="setCustomValidity('')">
+      </h2>
+      <button type="submit" value="Naprej" class="btn btn-dark">Naprej</button>
+    </form>
 
-        % elif korak=='for':
-          <h3>Izbrano število ladjic: {{len(igra.standardne_ladje)}}</h3>
-          <br>
-          <form action="/nastavi_dolzino/" method="POST">
-              <h2><label for="quantity">Izberite velikost {{igra.indeks_trenutne_ladjice + 1}}. ladjice:</label>
-              <input type="number" id="quantity" name="quantity" min="1" max="5" required="required"
-                oninvalid="this.setCustomValidity('Prosim vnesite željeno dolžino med 1 in 5.')" oninput="setCustomValidity('')"> </h2>
-              <button type="submit" value="Naprej" class="btn btn-dark">Potrdi izbrane nastavitve</button>
-            </form>
-
-        %end
-      </div>
+  % elif korak=='for':
+    <h3>Izbrano število ladjic: {{len(igra.standardne_ladje)}}</h3>
+    <br>
+    <form action="/nastavi_dolzino/" method="POST">
+      <h2><label for="quantity">Izberite velikost {{igra.indeks_trenutne_ladjice + 1}}. ladjice:</label>
+      <input type="number" id="quantity" name="quantity" min="1" max="5" required="required"
+        oninvalid="this.setCustomValidity('Prosim vnesite željeno dolžino med 1 in 5.')" oninput="setCustomValidity('')"> </h2>
+      <button type="submit" value="Naprej" class="btn btn-dark">Potrdi izbrane nastavitve</button>
+    </form>
+  %end
 </div>
 
 

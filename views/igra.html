@@ -4,10 +4,10 @@
     <div class="my-3 px-3">
         <h3 class="pb-2">Na zgornjem polju izberite kam želite ustreliti.</h3>
         <form action="/igraj_offline/" method="POST">
-        <table class='igralna_plosca centriraj'>
+        <table class='igralna_plosca' style="margin-left: auto; margin-right: auto;">
         <tr>
         <td>
-        <table class='igralna_plosca centriraj'>
+        <table class='igralna_plosca'>
             % for i in range(10):
                 <tr>
                     % for j in range(10):
@@ -34,7 +34,7 @@
         <tr>
         
         <td>
-        <table class='druga_plosca centriraj'>
+        <table class='druga_plosca' style="margin-left: auto; margin-right: auto;">
         <h5 class="pt-3">Lokacija vaših ladjic in strelov nasprotnika:</h5>
             % for i in range(10):
                 <tr>
