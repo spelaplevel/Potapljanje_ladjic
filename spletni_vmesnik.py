@@ -180,15 +180,14 @@ def f():
 @bottle.post('/nova_igra/')
 def zgodovina_post():
     ime_gumba = list(bottle.request.forms.keys())[0]
-    if ime_gumba == 'offline':  # Pritisnil je prvi gumb. 
+    # Pritisnil je prvi gumb. 
+    if ime_gumba == 'offline':  
         igra = pridobi_igro()[0]
         igra.__init__(igra.standardne_ladje) # Začnemo NOVO igro. 
         bottle.redirect('/postavljanje_offline/')
-    if ime_gumba == 'nastavitve':
+    # Pritisnil je drugi gumb. 
+    if ime_gumba == 'nastavitve': 
         igra = pridobi_igro()[0]
         bottle.redirect('/nastavitve/velikost')
-    else:
-        pass
-        #online
     
 bottle.run(debug=True, reloader=True, host='localhost')
